@@ -31,14 +31,14 @@ Print the version number.
 ### -n, --non-interactive
 
 Do not prompt for a password.\
-This option is forwarded to **doas** as `-n`.
+> This option is forwarded to **doas** as `-n`.
 
 ### -u, --user
 
 Specify the user to run the command as.\
-This option is forwarded to **doas** as `-u`.
+> This option is forwarded to **doas** as `-u`.
 
 ### -s, --shell
 
 Specify the shell to use.\
-This option is forwarded to **doas** as `-s`.
+> This option is forwarded to **doas** as `-s`.
