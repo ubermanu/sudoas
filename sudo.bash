@@ -37,6 +37,10 @@ while [[ $# -gt 0 ]]; do
     doas_args+=(-s)
     shift
     ;;
+  -s=* | --shell=*)
+    doas_args+=(-s "${key#*=}")
+    shift
+    ;;
   -u | --user)
     doas_args+=(-u)
     shift
@@ -61,6 +65,10 @@ while [[ $# -gt 0 ]]; do
   -c | --command)
     # not supported
     shift
+    shift
+    ;;
+  -c=* | --command=*)
+    # not supported
     shift
     ;;
   -)
