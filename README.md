@@ -15,4 +15,3 @@ Copy the `sudo.bash` file to `~/.local/bin/sudo` and make it executable.
 ```bash
 sudo [options] command
 ```
-# sudoas
