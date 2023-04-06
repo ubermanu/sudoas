@@ -10,6 +10,10 @@ yellow=$(tput setaf 3)
 end=$(tput sgr0)
 # shellcheck disable=SC2034
 
+# If TEST is set to 1, the script will output the arguments
+TEST=${TEST:-0}
+
+# Parse arguments
 doas_args=()
 
 while [[ $# -gt 0 ]]; do
@@ -87,6 +91,12 @@ done
 if [[ ${#doas_args[@]} -eq 0 ]]; then
   echo "${yellow}THIS IS A COMPATIBILITY SCRIPT FOR DOAS.${end}"
   echo "Usage: sudo [options] [command]"
+  exit 0
+fi
+
+# If TEST is set to 1, output the arguments and exit
+if [[ $TEST -eq 1 ]]; then
+  echo "${doas_args[*]}"
   exit 0
 fi
 
