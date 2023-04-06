@@ -8,16 +8,15 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, fedora-latest, archlinux ]
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '19.x'
-          registry-url: 'https://registry.npmjs.org'
 
       - name: Install bats
         run: npm install -g bats
