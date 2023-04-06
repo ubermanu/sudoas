@@ -1,18 +1,10 @@
 name: continuous-integration
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build-and-test:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ ubuntu-latest, fedora-latest, archlinux ]
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -22,4 +14,4 @@ jobs:
         run: npm install -g bats
 
       - name: Run tests
-        run: make test
+        run: bats --print-output-on-failure --formatter tap tests
