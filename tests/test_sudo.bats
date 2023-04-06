@@ -12,11 +12,11 @@ export TEST=1
 @test "basic usage" {
   run ./sudo.bash echo "hello"
   [ "$status" -eq 0 ]
-  [ "$output" = "echo hello" ]
+  [ "$output" = "echo ""hello""" ]
 }
 
 @test "ignore the prompt option" {
   run ./sudo.bash --prompt="Password:" echo "hello"
   [ "$status" -eq 0 ]
-  [ "$output" = "echo hello" ]
+  [ "$output" = "echo ""hello""" ]
 }
