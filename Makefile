@@ -5,7 +5,7 @@ INSTALL_DIR := ~/.local/bin
 
 test:
 	@echo "Running tests..."
-	@./tests/test_sudo.bats
+	@bats --print-output-on-failure tests
 
 install:
 	@echo "Installing sudo..."
