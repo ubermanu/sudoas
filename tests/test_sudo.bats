@@ -20,3 +20,10 @@ export TEST=1
   [ "$status" -eq 0 ]
   [ "$output" = "echo hello" ]
 }
+
+@test "map the supported options" {
+  run ./sudo.bash --non-interactive --user=root --shell=/bin/zsh echo hello
+  echo "$output"
+  [ "$status" -eq 0 ]
+  [ "$output" = "-n -u root -s /bin/zsh echo hello" ]
+}
