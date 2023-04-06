@@ -75,14 +75,14 @@ while [[ $# -gt 0 ]]; do
     # not supported
     shift
     ;;
-  -)
-    # not supported
+  -* | --*)
+    # Ignore unsupported options
     shift
     ;;
   *)
     # If not a sudo argument, assume it's a command and arguments
-    doas_args+=("$1")
-    shift
+    doas_args+=("$@")
+    break
     ;;
   esac
 done
