@@ -29,10 +29,6 @@ while [[ $# -gt 0 ]]; do
     echo "Version: 1.0"
     exit 0
     ;;
-  -v | --validate)
-    # not supported
-    shift
-    ;;
   -n | --non-interactive)
     doas_args+=(-n)
     shift
@@ -58,25 +54,15 @@ while [[ $# -gt 0 ]]; do
     shift
     shift
     ;;
-  -p=* | --prompt=*)
-    # not supported
-    shift
-    ;;
-  -C | --preserve-env)
-    # not supported
-    shift
-    ;;
   -c | --command)
     # not supported
     shift
     shift
     ;;
-  -c=* | --command=*)
-    # not supported
-    shift
-    ;;
   -* | --*)
     # Ignore unsupported options
+    # Match any option that starts with - or --
+    # and any option that starts with -- and contains an =
     shift
     ;;
   *)

@@ -27,6 +27,12 @@ export TEST=1
   [ "$output" = "-n -u root -s /bin/zsh echo hello" ]
 }
 
+@test "map the supported options (alternate syntax)" {
+  run ./sudo.bash -n --user root -s /bin/zsh echo hello
+  [ "$status" -eq 0 ]
+  [ "$output" = "-n -u root -s /bin/zsh echo hello" ]
+}
+
 @test "allow args to be piped if the command allows it" {
   run ./sudo.bash pacman -Rns -
   [ "$status" -eq 0 ]
