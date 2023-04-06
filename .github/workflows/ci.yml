@@ -23,7 +23,7 @@ jobs:
         run: npm install -g bats
 
       - name: Install expect
-        run: sudo apt-get install expect
+        run: sudo apt-get install expect doas
 
       - name: Run tests
         run: make test
