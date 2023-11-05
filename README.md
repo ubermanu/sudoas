@@ -6,9 +6,11 @@ If an option is not supported by **doas**, it will be ignored.
 
 ## Install
 
-Copy the `sudo.bash` file to `~/.local/bin/sudo` and make it executable.
+```bash:
+curl https://ubermanu.github.io/sudoas/install.sh | sh
+```
 
-> Be sure that the `doas` command is available in your `$PATH`.
+> This will install the script into your `.local/bin/sudo` directory.
 
 ## Usage
 
