@@ -56,3 +56,9 @@ export TEST=1
   [ "$status" -eq 0 ]
   [ "$output" = "echo hello" ]
 }
+
+@test "move environment variables before the command" {
+  run ./sudo.bash TERMINFO=/usr/lib/kitty/terminfo echo hello
+  [ "$status" -eq 0 ]
+  [ "$output" = "echo hello" ]
+}

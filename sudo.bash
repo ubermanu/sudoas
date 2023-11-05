@@ -5,6 +5,8 @@
 # and then runs doas with the mapped arguments.
 # See https://github.com/ubermanu/sudoas
 
+version="1.1"
+
 # shellcheck disable=SC2034
 yellow=$(tput setaf 3)
 end=$(tput sgr0)
@@ -15,6 +17,8 @@ TEST=${TEST:-0}
 
 # Parse arguments
 doas_args=()
+doas_env=()
+parse_env=1
 
 while [[ $# -gt 0 ]]; do
   key="$1"
@@ -26,7 +30,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   -V | --version)
     echo "${yellow}THIS IS A COMPATIBILITY SCRIPT FOR DOAS.${end}"
-    echo "Version: 1.0"
+    echo "Version: ${version}"
     exit 0
     ;;
   -n | --non-interactive)
@@ -67,8 +71,15 @@ while [[ $# -gt 0 ]]; do
     ;;
   *)
     # If not a sudo argument, assume it's a command and arguments
-    doas_args+=("$@")
-    break
+    # or an environment variable
+    if [ $parse_env -eq 1 ] && [[ $key == *=* ]]; then
+      doas_env+=("$key")
+      shift
+    else
+      parse_env=0
+      doas_args+=("$@")
+      break
+    fi
     ;;
   esac
 done
@@ -85,5 +96,10 @@ if [[ $TEST -eq 1 ]]; then
   echo "${doas_args[*]}"
   exit 0
 fi
+
+# Run doas with environment variables and arguments
+for env_var in "${doas_env[@]}"; do
+  export "$env_var"
+done
 
 doas "${doas_args[@]}"
