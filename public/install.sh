@@ -11,9 +11,9 @@ if ! command -v curl &> /dev/null; then
   exit 1
 fi
 
-if curl -o "$DESTINATION_PATH" "$SCRIPT_URL"; then
+if curl -s -o "$DESTINATION_PATH" "$SCRIPT_URL"; then
   chmod +x "$DESTINATION_PATH"
-  echo "sudo script installed in $DESTINATION_PATH"
+  echo "🎉 sudoas script installed in $DESTINATION_PATH"
 else
   echo "Failed to download and install the sudoas script."
 fi
