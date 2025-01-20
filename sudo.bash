@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This script is used to run doas instead of sudo.
 # It is called sudo, so it maps all arguments to doas
