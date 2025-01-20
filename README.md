@@ -7,7 +7,7 @@ If an option is not supported by **doas**, it will be ignored.
 ## Install
 
 ```bash:
-curl https://ubermanu.github.io/sudoas/install.sh | sh
+curl -sSL https://ubermanu.github.io/sudoas/install.sh | sh
 ```
 
 > This will install the script into your `.local/bin` directory.
