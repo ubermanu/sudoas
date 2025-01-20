@@ -10,7 +10,7 @@ If an option is not supported by **doas**, it will be ignored.
 curl https://ubermanu.github.io/sudoas/install.sh | sh
 ```
 
-> This will install the script into your `.local/bin/sudo` directory.
+> This will install the script into your `.local/bin` directory.
 
 ## Usage
 
